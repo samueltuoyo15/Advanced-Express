@@ -18,6 +18,7 @@ export const headersVersioning = (version) => (req, res, next) => {
       success: false,
       error: "API Header version not supported"
     })
+  }
 }
 
 export const contentTypeVersion = (version) => (req, res, next) => {
@@ -30,4 +31,5 @@ export const contentTypeVersion = (version) => (req, res, next) => {
       success: false,
       error: "API Content Type version not supported"
     })
+  }
 }
