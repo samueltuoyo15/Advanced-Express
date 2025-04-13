@@ -11,32 +11,20 @@ client.on("error", (error) => console.error("Redis Client Error Occured!", error
 
 //function to test redis connection 
 
-const testRedisConnection = async () => {
+const redisDataStructure = async () => {
   try{
     await client.connect()
     console.log("Redis Client Connected")
     
-    // set a key
-    await client.set("name", "Golang Dev")
+    await client.set("user:name", "Golang Dev")
+    const name = await client.get("user:name")
+    console.log(name)
     
-    // get a key
-    const username = await client.get("name")
-    console.log(`Username is ${username}`)
-   
-   // numerical count of a key that was deleted 
-    const deleteCount = await client.del("name")
-    console.log(deleteCount)
-    
-    await client.set("score", "100")
-   
-   // inctrement score
-    const incrementScore = await client.incr("score")
-    console.log(incrementScore)
-  
-   // decrement score
-    const decrementScore = await client.decr("score")
-    console.log(decrementScore)
-    
+    // set multiple key value pairs 
+    await client.mSet(["user:country", "united states", "user:age", "50", "user:email", "test@gmail.com"])
+    const [country, age, email] = await client.mGet(["user:country", "user:age", "user:email"])
+    console.log(country, age, email)
+ 
   } catch(error){
     console.error(error)
   } finally {
@@ -45,10 +33,4 @@ const testRedisConnection = async () => {
   }
 }
 
-const redisDataStructure = async () => {
-  try{
-    // strings -> SET, GET, MSET, MGET
-  } catch(error){
-    console.error(error)
-  }
-}
+redisDataStructure()

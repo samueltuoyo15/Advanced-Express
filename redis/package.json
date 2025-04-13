@@ -1,9 +1,9 @@
 {
   "name": "redis",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "data-structures.ts",
   "scripts": {
-    "start": "nodemon server.ts"
+    "start": "nodemon data-structures.ts"
   },
   "keywords": [],
   "author": "",
