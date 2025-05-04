@@ -1,75 +1,178 @@
-# Express Concepts
+# 🚀 Advanced Node.js Concepts and Microservices 🛠️
 
-A simple yet illustrative Express.js project showcasing essential concepts like middleware, CORS configuration, and basic server setup. This project serves as a foundational template for building more complex Node.js applications.
+Dive into advanced Node.js concepts and microservices architecture with this project! Explore various aspects of Express.js, Redis data structures, and a basic social media microservices setup.
 
-## Description
+## 🛠️ Installation
 
-This project provides a basic Express.js server setup, complete with CORS configuration and custom middleware for request logging. It's designed to be a starting point for developers looking to understand and implement these core concepts in their own projects.
+Follow these steps to set up the project locally:
 
-## Installation
+- ⬇️ **Clone the Repository**:
+  ```bash
+  git clone https://github.com/samueltuoyo15/Advanced-Express.git
+  cd Advanced-Express
+  ```
 
-To get started with this project, follow these steps:
+- ⚙️ **Install Dependencies**:
 
-1.  **Clone the repository:**
-
+  For the `express-concepts` project:
     ```bash
-    git clone <repository-url>
     cd express-concepts
+    npm install
     ```
-
-2.  **Install dependencies:**
-
+    
+  For the `redis` project:
     ```bash
+    cd ../redis
+    npm install
+    ```
+  
+  For the `social-media-microservices` projects:
+    ```bash
+    cd ../social-media-microservices/api-gateway
+    npm install
+    cd ../identity-service
     npm install
     ```
 
-3.  **Run the development server:**
+- 🚀 **Run the Projects**:
 
+  For the `express-concepts` project:
     ```bash
+    cd ../../express-concepts
     npm run dev
     ```
 
-    This will start the server, and you can access it at `http://localhost:5000`.
+  For the `redis` project:
+    ```bash
+    cd ../redis
+    npm run start
+    ```
 
-## Usage
+  For the `social-media-microservices` projects:
+    ```bash
+    # In api-gateway directory
+    cd ../social-media-microservices/api-gateway
+    npm run dev
 
-The server is configured to run on port 5000. It includes the following features:
+    # In identity-service directory
+    cd ../identity-service
+    npm run dev
+    ```
 
-*   **CORS Configuration**: Implemented using the `cors` middleware to allow requests from specified origins (e.g., `http://localhost:3000`).
-*   **Request Logging**: Custom middleware logs incoming requests to the console, providing valuable debugging information.
-*   **Basic Express Setup**: Demonstrates how to set up a basic Express.js server and listen for incoming requests.
+## 💡 Usage
 
-## Features
+### Express Concepts
 
-| Feature           | Description                                                                                                                                                                 |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CORS Configuration | Configures Cross-Origin Resource Sharing (CORS) to allow requests from specific origins.                                                                                  |
-| Request Logging   | Implements custom middleware to log incoming requests, including timestamps, HTTP methods, URLs, and user agents.                                                           |
-| Middleware        | Demonstrates the use of middleware functions to handle requests and responses. Includes `express.json()` for parsing JSON bodies and a custom middleware for adding timestamps.|
-| Express Setup     | Sets up a basic Express.js server and listens for incoming requests on port 5000.                                                                                         |
+Explore various Express.js middleware implementations such as:
 
-## Technologies Used
+- **Custom Middleware**: Request logging and timestamp injection.
+- **CORS Configuration**: Setting up CORS policies.
+- **Error Handling**: Global error handling and API error class.
+- **Rate Limiting**: Basic rate limiting to prevent abuse.
+- **URL Versioning**: API versioning using URL paths.
 
-| Technology   | Description                                                                                    |
-| ------------ | ---------------------------------------------------------------------------------------------- |
-| Node.js      | JavaScript runtime environment for running server-side code.                                  |
-| Express.js   | Web application framework for Node.js.                                                        |
-| TypeScript   | Superset of JavaScript that adds static typing.                                                 |
-| Cors         | Node.js package for providing a Connect/Express middleware that can be used to enable CORS. |
-| Nodemon      | Utility that automatically restarts the server when file changes in the directory are detected. |
+```typescript
+import express from "express";
+import { corsConfig } from "./config/corsConfig.ts";
+import { requestLogger, addTimestamps } from "./middlewares/customMiddleware.ts";
+import { globalErrorHandler } from "./middlewares/errorHandler.ts";
+import { urlVersioning } from "./middlewares/urlVersioning.ts";
+import { createBasicRateLimiter } from "./middlewares/rateLimit.ts";
+import itemsRoute from "./routes/items-route.ts";
 
-## Contributing
+const app = express();
 
-Contributions are welcome! Here's how you can contribute:
+app.use(requestLogger);
+app.use(addTimestamps);
+app.use(corsConfig());
+app.use(createBasicRateLimiter(100, 10 * 60 * 1000));
+app.use(express.json());
+app.use(urlVersioning("v1"));
+app.use("/api/v1", itemsRoute);
+app.use(globalErrorHandler);
 
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and commit them with descriptive commit messages.
-4.  Push your changes to your fork.
-5.  Submit a pull request to the main repository.
+app.listen(5000, () => console.log("app is running at http://localhost:5000"));
+```
 
-## License
+### Redis Data Structures
 
-This project is open-source and available under the [MIT License](LICENSE).
+Example usage of Redis data structures:
 
-[![Built with Dokugen](https://img.shields.io/badge/Built%20with-Dokugen-brightgreen)](https://github.com/samueltuoyo15/Dokugen)
+```typescript
+import { createClient } from "redis";
+
+const client = createClient({
+  socket: {
+    host: "localhost",
+    port: 6379,
+  },
+});
+
+client.on("error", (error) => console.error("Redis Client Error Occured!", error));
+
+const redisDataStructure = async () => {
+  try {
+    await client.connect();
+    console.log("Redis Client Connected");
+
+    await client.set("user:name", "Golang Dev");
+    const name = await client.get("user:name");
+    console.log(name);
+
+    await client.mSet(["user:country", "united states", "user:age", "50", "user:email", "test@gmail.com"]);
+    const [country, age, email] = await client.mGet(["user:country", "user:age", "user:email"]);
+    console.log(country, age, email);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await client.quit();
+  }
+};
+
+redisDataStructure();
+```
+
+### Social Media Microservices
+
+A basic setup for social media microservices with:
+
+- **API Gateway**: Entry point for routing requests.
+- **Identity Service**: Handles user authentication and authorization.
+
+## ✨ Features
+
+- 🚀 **Express.js**: Demonstrates key concepts and middleware usage.
+- 💾 **Redis**: Implements data structures and connection management.
+- 🛡️ **Microservices**: Basic setup with API Gateway and Identity Service.
+- 🔒 **Security**: Includes CORS, rate limiting, and error handling.
+- 🚦 **Versioning**: API versioning using URL paths.
+
+## 💻 Technologies Used
+
+| Technology | Link                                                                        |
+| :---------- | :-------------------------------------------------------------------------- |
+| Node.js    | [https://nodejs.org/](https://nodejs.org/)                                  |
+| Express.js | [https://expressjs.com/](https://expressjs.com/)                             |
+| Redis      | [https://redis.io/](https://redis.io/)                                      |
+| TypeScript | [https://www.typescriptlang.org/](https://www.typescriptlang.org/)         |
+
+## 🤝 Contributing
+
+Contributions are welcome! Here are the guidelines:
+
+- 🐞 Report bugs using GitHub issues.
+- 🛠️ Submit pull requests with clear descriptions.
+- 📝 Follow the existing code style.
+- ➕ Add tests for new features.
+
+## 📜 License
+
+This project is under the [MIT License](LICENSE).
+
+## 🧑‍💻 Author Info
+
+- GitHub: [SamuelTuoyo15](https://github.com/samueltuoyo15)
+- Twitter: [Insert Twitter Link](Insert Twitter Link)
+- LinkedIn: [Insert LinkedIn Link](Insert LinkedIn Link)
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://github.com/samueltuoyo15/Dokugen)
