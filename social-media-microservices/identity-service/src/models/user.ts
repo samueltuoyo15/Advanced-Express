@@ -1,53 +1,68 @@
-import mongoose from "mongoose"
-import argon2 from "argon2"
 import { NextFunction } from "express"
-const userSchema = new mongoose.Schema({
+import mongoose,  { Document, Model } from "mongoose"
+import argon2 from "argon2"
+
+interface IUser extends Document {
+  username: string
+  full_name: string
+  profile_picture?: string
+  email: string
+  password: string
+  created_at: Date
+  comparePassword(candidatePassword: string): Promise<boolean>
+}
+interface IUserModel extends Model<IUser> {
+
+}
+const userSchema = new mongoose.Schema<IUser, IUserModel>({
   username: {
     type: String,
     required: true,
     unique: true,
     trim: true
-  }
+  },
   full_name: {
     type: String,
     required: true,
     unique: true,
     trim: true
-  }
+  },
   profile_picture: {
     type: String,
-  }
+    default: null
+  },
   email: {
     type: String,
     required: true,
     unique: true,
     trim: true,
     lowercase: true
-  }
+  },
   password: {
     type: String,
     required: true
-  }
+  },
   created_at: {
     type: Date
     default: Date.now
   },
 },{
-  timestamp: true 
+  timestamps: true 
 })
 
-userSchema.pre("save" async (next: NextFunction) => {
+userSchema.pre<IUser>("save" async (next: NextFunction) => {
   if(this.isModified("password")){
     try{
       this.password = await argon2.hash(this.password)
     } catch(error){
-      throw next(error)
+      return next(error)
     }
   }
 })
 
-userSchema.methods.comparePassword = async (candidatePassword) => {
+userSchema.methods.comparePassword = async (this: IUser, candidatePassword: string): Promise<boolean> => {
   try{
+    if(!this.password) return false
     return await argon2.verify(this.password, candidatePassword)
   } catch(error){
     throw error
@@ -56,5 +71,9 @@ userSchema.methods.comparePassword = async (candidatePassword) => {
 
 userSchema.index({ email: "text" })
 
-const User = mongoose.model("User", userSchema)
+
+const User: IUserModel = mongoose.model<IUser, IUserModel>("User", userSchema)
 export default User
+
+
+
