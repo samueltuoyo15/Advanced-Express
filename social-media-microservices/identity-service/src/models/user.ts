@@ -54,6 +54,7 @@ userSchema.pre<IUser>("save" async (next: NextFunction) => {
   if(this.isModified("password")){
     try{
       this.password = await argon2.hash(this.password)
+      next()
     } catch(error){
       return next(error)
     }
@@ -69,7 +70,7 @@ userSchema.methods.comparePassword = async (this: IUser, candidatePassword: stri
   }
 }
 
-userSchema.index({ email: "text" })
+userSchema.index({ username: "text" })
 
 
 const User: IUserModel = mongoose.model<IUser, IUserModel>("User", userSchema)
