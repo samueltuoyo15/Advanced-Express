@@ -6,9 +6,12 @@ import logger from "@/utils/logger"
 import requestLogger from "@/middleware/request.logger"
 import errorHandler from "@/middleware/error.handler"
 import identityService from "@/routes/identity.service"
+import { RateLimiterRedis } from "rate-limiter-flexible"
+import Redis from "ioredis"
 import dotenv from "dotenv"
 dotenv.config()
 
+const redisClient = new Redis()
 const app: Application = express()
 const PORT = process.env.PORT!
 
