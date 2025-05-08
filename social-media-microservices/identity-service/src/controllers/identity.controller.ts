@@ -5,6 +5,7 @@ import logger from "@/utils/logger"
 import generateTokens from "@/utils/generateToken"
 
 export const registerUser = async (req: Request, res: Response) => {
+ logger.info("User Refgistration Started")
   try {
     const { error } = validateRegistration(req.body)
     if(error){
@@ -32,6 +33,7 @@ export const registerUser = async (req: Request, res: Response) => {
       accessToken,
       refreshToken
     })
+    return 
   } catch (error) {
     logger.error("Internal Server Error", error)
     res.status(409).json({ success: false, message: "Internal Server Error" })
