@@ -1,8 +1,10 @@
 import { Request, Response } from "express"
-import logger from "@/utils/logger"
 import { validateRegistration } from "@/utils/validation"
+import User from "@/models/User"
+import logger from "@/utils/logger"
+import generateTokens from "@/utils/generateToken"
 
-const registerUser = async (req: Request, res: Response) => {
+export const registerUser = async (req: Request, res: Response) => {
   try {
     const { error } = validateRegistration(req.body)
     if(error){
@@ -12,7 +14,27 @@ const registerUser = async (req: Request, res: Response) => {
     }
     
     const { username, full_name, email, password } = req.body
-  } catch (error) {
     
+    let user = await user.findOne({ $or: [{ email }, {username}]})
+    if(user){
+      logger.warn("user already registered:")
+      res.status(409).json({ success: false, message: "user already registered" })
+      return 
+    }
+    user = new User({ username, full_name, email, password })
+    user.save()
+    logger.warn("user registration successful:", user?._id)
+  
+    const { accessToken, refreshToken } = await generateTokens(user)
+    res.status(201).json({ 
+      success: true
+      message: "User registration successful"
+      accessToken,
+      refreshToken
+    })
+  } catch (error) {
+    logger.error("Internal Server Error", error)
+    res.status(409).json({ success: false, message: "Internal Server Error" })
+    return 
   }
 }
