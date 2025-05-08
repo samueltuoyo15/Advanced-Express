@@ -27,10 +27,6 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>({
     unique: true,
     trim: true
   },
-  profile_picture: {
-    type: String,
-    default: null
-  },
   email: {
     type: String,
     required: true,
