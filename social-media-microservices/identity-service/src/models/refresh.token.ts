@@ -14,11 +14,11 @@ const refreshTokenSchema = new mongoose.Schema({
      type: Date,
      required: true,
    },
-}, timestamps: { true })
+}, { timestamps: true })
 
 
-refreshTokenSchema.index({ expiresAt: 1 }, { expiresAfterSeconds: 0})
+refreshTokenSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0})
 
-const refereshToken = mongoose.model("refreshToken", refreshTokenSchema)
+const refreshToken = mongoose.model("refreshToken", refreshTokenSchema)
 
 export default refreshToken
