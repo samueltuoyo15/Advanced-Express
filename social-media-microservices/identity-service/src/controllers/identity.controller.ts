@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
 import { validateRegistration } from "@/utils/validation"
-import User from "@/models/User"
+import User from "@/models/user"
 import logger from "@/utils/logger"
-import generateTokens from "@/utils/generateToken"
+import { generateTokens } from "@/utils/generateToken"
 
 export const registerUser = async (req: Request, res: Response) => {
  logger.info("User Refgistration Started")
@@ -16,7 +16,7 @@ export const registerUser = async (req: Request, res: Response) => {
     
     const { username, full_name, email, password } = req.body
     
-    let user = await user.findOne({ $or: [{ email }, {username}]})
+    let user = await User.findOne({ $or: [{ email }, {username}]})
     if(user){
       logger.warn("user already registered:")
       res.status(409).json({ success: false, message: "user already registered" })
@@ -28,8 +28,8 @@ export const registerUser = async (req: Request, res: Response) => {
   
     const { accessToken, refreshToken } = await generateTokens(user)
     res.status(201).json({ 
-      success: true
-      message: "User registration successful"
+      success: true,
+      message: "User registration successful",
       accessToken,
       refreshToken
     })

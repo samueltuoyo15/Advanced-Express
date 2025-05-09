@@ -1,4 +1,4 @@
-import wiston from "wiston"
+import wiston from "winston"
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -14,13 +14,13 @@ const logger = wiston.createLogger({
     transports: [
       new wiston.transports.Console({
         format: wiston.format.combine(
-        wiston.format.colourize(),
+        wiston.format.colorize(),
         wiston.format.simple()
       ),
      }),
-     new wiston.format.File({filename: "error.log", level: "error"})
-     new wiston.format.File({filename: "combined.log" })
-   ],l
+     new wiston.transports.File({filename: "error.log", level: "error"}),
+     new wiston.transports.File({filename: "combined.log" })
+   ],
 })
 
 export default logger 
