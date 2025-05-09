@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>({
   timestamps: true 
 })
 
-userSchema.pre<IUser>("save" async (next: NextFunction) => {
+userSchema.pre("save" async (next) => {
   if(this.isModified("password")){
     try{
       this.password = await argon2.hash(this.password)
