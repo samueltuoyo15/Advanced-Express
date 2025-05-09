@@ -39,25 +39,25 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>({
     required: true
   },
   created_at: {
-    type: Date
+    type: Date,
     default: Date.now
   },
 },{
   timestamps: true 
 })
 
-userSchema.pre("save" async (next) => {
+userSchema.pre("save", async function (next) {
   if(this.isModified("password")){
     try{
       this.password = await argon2.hash(this.password)
       next()
     } catch(error){
-      return next(error)
+      return next(error as Error)
     }
   }
 })
 
-userSchema.methods.comparePassword = async (this: IUser, candidatePassword: string): Promise<boolean> => {
+userSchema.methods.comparePassword = async function(candidatePassword: string): Promise<boolean> {
   try{
     if(!this.password) return false
     return await argon2.verify(this.password, candidatePassword)
