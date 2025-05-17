@@ -5,7 +5,7 @@ import { rateLimit } from "express-rate-limit"
 import logger from "@/utils/logger"
 
 const redisClient = new Redis(process.env.REDIS_URL!)
-const ratLimit  = rateLimit({
+const ratLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100, 
   standardHeaders: true,
@@ -21,4 +21,4 @@ const ratLimit  = rateLimit({
 })
 
 
-export default rateLimit
+export default ratLimiter
