@@ -1,10 +1,11 @@
 import { Request, Response } from "express"
+import Redis from "ioredis"
 import RedisStore from "rate-limit-redis"
-import { redisClient } from "@/middleware/rate.limiter"
-import logger from "@/utils/logger"
 import { rateLimit } from "express-rate-limit"
+import logger from "@/utils/logger"
 
-const sensitiveEndpointsRateLimit = rateLimit({
+const redisClient = new Redis(process.env.REDIS_URL!)
+const ratLimit  = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100, 
   standardHeaders: true,
@@ -19,4 +20,5 @@ const sensitiveEndpointsRateLimit = rateLimit({
   })
 })
 
-export default sensitiveEndpointsRateLimit
+
+export default rateLimit

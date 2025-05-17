@@ -16,3 +16,24 @@
 {"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","level":"error","message":"unhandled Rejection at:","service":"identity-service","timestamp":"2025-05-17T16:43:48.519Z"}
 {"level":"info","message":"identity service is running on port 3001","service":"identity-service","timestamp":"2025-05-17T16:45:45.547Z"}
 {"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-05-17T16:45:49.423Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-05-17T17:07:22.298Z"}
+{"level":"info","message":"Request Body: undefined","service":"identity-service","timestamp":"2025-05-17T17:07:22.374Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-05-17T17:08:07.071Z"}
+{"level":"info","message":"Request Body: undefined","service":"identity-service","timestamp":"2025-05-17T17:08:07.079Z"}
+{"level":"info","message":"User Refgistration Started","service":"identity-service","timestamp":"2025-05-17T17:08:07.141Z"}
+{"buffer":{"data":[104,40,194,119,217,205,59,80,99,175,43,252],"type":"Buffer"},"level":"warn","message":"user registration successful:","service":"identity-service","timestamp":"2025-05-17T17:08:07.675Z"}
+{"level":"error","message":"Internal Server Error secretOrPrivateKey must have a value","service":"identity-service","stack":"Error: secretOrPrivateKey must have a value\n    at Object.module.exports [as sign] (/data/data/com.termux/files/home/Advanced-Express/social-media-microservices/identity-service/node_modules/jsonwebtoken/sign.js:111:20)\n    at generateTokens (/data/data/com.termux/files/home/Advanced-Express/social-media-microservices/identity-service/src/utils/generateToken.ts:6:27)\n    at registerUser (/data/data/com.termux/files/home/Advanced-Express/social-media-microservices/identity-service/src/controllers/identity.controller.ts:29:63)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-05-17T17:08:07.714Z"}
+{"level":"info","message":"identity service is running on port 3001","service":"identity-service","timestamp":"2025-05-17T17:11:43.488Z"}
+{"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-05-17T17:11:46.425Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-05-17T17:11:56.768Z"}
+{"level":"info","message":"Request Body: undefined","service":"identity-service","timestamp":"2025-05-17T17:11:56.770Z"}
+{"level":"info","message":"User Refgistration Started","service":"identity-service","timestamp":"2025-05-17T17:11:57.188Z"}
+{"level":"warn","message":"user already registered:","service":"identity-service","timestamp":"2025-05-17T17:11:57.731Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-05-17T17:12:04.802Z"}
+{"level":"info","message":"Request Body: undefined","service":"identity-service","timestamp":"2025-05-17T17:12:04.804Z"}
+{"level":"info","message":"User Refgistration Started","service":"identity-service","timestamp":"2025-05-17T17:12:04.849Z"}
+{"level":"warn","message":"user already registered:","service":"identity-service","timestamp":"2025-05-17T17:12:05.123Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-05-17T17:12:21.917Z"}
+{"level":"info","message":"Request Body: undefined","service":"identity-service","timestamp":"2025-05-17T17:12:21.918Z"}
+{"level":"info","message":"User Refgistration Started","service":"identity-service","timestamp":"2025-05-17T17:12:21.964Z"}
+{"buffer":{"data":[104,40,195,118,46,13,193,84,59,101,15,211],"type":"Buffer"},"level":"warn","message":"user registration successful:","service":"identity-service","timestamp":"2025-05-17T17:12:22.267Z"}
