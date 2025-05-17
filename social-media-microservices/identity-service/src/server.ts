@@ -13,7 +13,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const app: Application = express()
-const PORT = process.env.PORT!
+const PORT = process.env.PORT || 3001
 
 app.use(requestLogger)
 app.use(helmet())
@@ -27,6 +27,11 @@ app.use(errorHandler)
 
 
 app.listen(PORT, () => {
-  logger.info(`Server is running on port ${PORT}`)
+  logger.info(`identity service is running on port ${PORT}`)
   connectToDb()
+})
+
+process.on("unhandledRejection", (reason, promise) => {
+  logger.error("unhandled Rejection at:", promise, "reason:", reason)
+  process.exit(1)
 })
