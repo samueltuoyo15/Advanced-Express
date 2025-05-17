@@ -1,4 +1,4 @@
-import express, { Application } from "express"
+import express, { Application, Request, Response, NextFunction} from "express"
 import helmet from "helmet"
 import cors from "cors"
 import logger from "@/utils/logger"
@@ -20,6 +20,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(errorHandler)
 
+const proxyOptions = {
+  proxyReqPathResolver: (req: Request) => {
+    return req.originalUrl.replace(/^\/v1/, "/api")
+  },
+  proxyErrorHandler: (err, res, next) => {
+    logger.error(`Proxy Error: ${err.message}`)
+    res.status(500).json({ message: "Internal Server Error", error: err.message})
+  }
+}
 
 app.listen(PORT, () => {
   logger.info(`Api gateway is running on port ${PORT}`)
