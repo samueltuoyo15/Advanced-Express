@@ -5,6 +5,7 @@ import logger from "@/utils/logger"
 import requestLogger from "@/middleware/request.logger"
 import errorHandler from "@/middleware/error.handler"
 import ratLimiter from "@/middleware/rate.limit"
+import proxy from "express-http-proxy"
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -12,7 +13,7 @@ const app: Application = express()
 const PORT = process.env.PORT || 3000
 
 app.use(requestLogger)
-app.use(ratLimiter())
+app.use(ratLimiter)
 app.use(helmet())
 app.use(cors())
 app.use(express.json())
