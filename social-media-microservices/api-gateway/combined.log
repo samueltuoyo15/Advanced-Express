@@ -9,3 +9,30 @@
 {"level":"info","message":"Api gateway is running on port http://localhost:3000","service":"api-gateway","timestamp":"2025-05-18T20:03:40.377Z"}
 {"level":"info","message":"Identity service is running on:  http://localhost:3001","service":"api-gateway","timestamp":"2025-05-18T20:03:40.559Z"}
 {"level":"info","message":"Redis Url: redis://localhost:6379","service":"api-gateway","timestamp":"2025-05-18T20:03:40.577Z"}
+{"level":"info","message":"Api gateway is running on port http://localhost:3000","service":"api-gateway","timestamp":"2025-05-18T20:38:00.968Z"}
+{"level":"info","message":"Identity service is running on:  http://localhost:3001","service":"api-gateway","timestamp":"2025-05-18T20:38:01.103Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"api-gateway","timestamp":"2025-05-18T20:38:01.111Z"}
+{"level":"info","message":"Recieved: POST request to /v1/auth/register","service":"api-gateway","timestamp":"2025-05-18T21:05:18.464Z"}
+{"level":"info","message":"Request Body: undefined","service":"api-gateway","timestamp":"2025-05-18T21:05:18.518Z"}
+{"level":"error","service":"api-gateway","timestamp":"2025-05-18T21:05:18.855Z"}
+{"level":"info","message":"Api gateway is running on port http://localhost:3000","service":"api-gateway","timestamp":"2025-05-18T21:19:14.311Z"}
+{"level":"info","message":"Identity service is running on:  http://localhost:3001","service":"api-gateway","timestamp":"2025-05-18T21:19:14.342Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"api-gateway","timestamp":"2025-05-18T21:19:14.348Z"}
+{"level":"info","message":"Recieved: POST request to /v1/auth/register","service":"api-gateway","timestamp":"2025-05-18T21:24:25.944Z"}
+{"level":"info","message":"Request Body: undefined","service":"api-gateway","timestamp":"2025-05-18T21:24:26.015Z"}
+{"level":"info","message":"Recieved: POST request to /v1/auth/register","service":"api-gateway","timestamp":"2025-05-18T21:24:40.124Z"}
+{"level":"info","message":"Request Body: undefined","service":"api-gateway","timestamp":"2025-05-18T21:24:40.127Z"}
+{"level":"info","message":"Recieved: POST request to /v1/auth/register","service":"api-gateway","timestamp":"2025-05-18T21:26:18.440Z"}
+{"level":"info","message":"Request Body: undefined","service":"api-gateway","timestamp":"2025-05-18T21:26:18.518Z"}
+{"level":"info","message":"Api gateway is running on port http://localhost:3000","service":"api-gateway","timestamp":"2025-05-18T21:29:05.713Z"}
+{"level":"info","message":"Identity service is running on:  http://localhost:3001","service":"api-gateway","timestamp":"2025-05-18T21:29:05.792Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"api-gateway","timestamp":"2025-05-18T21:29:05.800Z"}
+{"level":"info","message":"Recieved: POST request to /v1/auth/register","service":"api-gateway","timestamp":"2025-05-18T21:30:22.601Z"}
+{"level":"info","message":"Request Body: undefined","service":"api-gateway","timestamp":"2025-05-18T21:30:22.780Z"}
+{"level":"info","message":"Response Received from identity service: 409","service":"api-gateway","timestamp":"2025-05-18T21:30:25.119Z"}
+{"level":"info","message":"Recieved: POST request to /v1/auth/register","service":"api-gateway","timestamp":"2025-05-18T21:30:34.241Z"}
+{"level":"info","message":"Request Body: undefined","service":"api-gateway","timestamp":"2025-05-18T21:30:34.243Z"}
+{"level":"info","message":"Response Received from identity service: 409","service":"api-gateway","timestamp":"2025-05-18T21:30:35.374Z"}
+{"level":"info","message":"Api gateway is running on port http://localhost:3000","service":"api-gateway","timestamp":"2025-05-18T21:33:19.801Z"}
+{"level":"info","message":"Identity service is running on:  http://localhost:3001","service":"api-gateway","timestamp":"2025-05-18T21:33:19.884Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"api-gateway","timestamp":"2025-05-18T21:33:19.894Z"}

@@ -29,7 +29,7 @@ const proxyOptions = {
   }
 }
 
-app.use("/api/v1", proxy(process.env.IDENTITY_SERVICE_DOMAIN, {
+app.use("/v1/auth", proxy(process.env.IDENTITY_SERVICE_DOMAIN, {
   ...proxyOptions,
   proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
     proxyReqOpts.headers["Content-Type"] === "application/json"

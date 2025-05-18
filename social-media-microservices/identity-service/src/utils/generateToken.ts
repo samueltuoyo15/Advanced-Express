@@ -13,7 +13,7 @@ export const generateTokens = async (user) => {
   expiresAt.setDate(expiresAt.getDate() + 7)
  
   await RefreshToken.create({
-    token: RefreshToken,
+    token: refreshToken,
     user: user?._id,
     expiresAt
   })
