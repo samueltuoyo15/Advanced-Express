@@ -24,7 +24,6 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>({
   full_name: {
     type: String,
     required: true,
-    unique: true,
     trim: true
   },
   email: {

@@ -12,12 +12,12 @@ dotenv.config()
 const app: Application = express()
 const PORT = process.env.PORT || 3000
 
-app.use(requestLogger)
 app.use(ratLimiter)
 app.use(helmet())
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(requestLogger)
 
 const proxyOptions = {
   proxyReqPathResolver: (req: Request) => {

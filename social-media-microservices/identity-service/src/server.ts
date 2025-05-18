@@ -15,13 +15,13 @@ dotenv.config()
 const app: Application = express()
 const PORT = process.env.PORT || 3001
 
-app.use(requestLogger)
 app.use(helmet())
 app.use(cors())
 app.use(compression())
 app.use(RateLimitMiddleware)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(requestLogger)
 app.use("/api/auth", identityService)
 app.use(errorHandler)
 
