@@ -36,7 +36,7 @@ app.use("/api/v1", proxy(process.env.IDENTITY_SERVICE_DOMAIN, {
     return proxyReqOpts
   },
   userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
-    logger.info(`Response Received from identity service: ${proxyReqOpts.statusCode}`)
+    logger.info(`Response Received from identity service: ${proxyRes.statusCode}`)
     return proxyResData
   },
 }))
