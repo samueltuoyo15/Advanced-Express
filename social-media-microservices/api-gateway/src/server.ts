@@ -18,7 +18,6 @@ app.use(helmet())
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(errorHandler)
 
 const proxyOptions = {
   proxyReqPathResolver: (req: Request) => {
@@ -30,8 +29,23 @@ const proxyOptions = {
   }
 }
 
+app.use("/api/v1", proxy(process.env.IDENTITY_SERVICE_DOMAIN, {
+  ...proxyOptions,
+  proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
+    proxyReqOpts.headers["Content-Type"] === "application/json"
+    return proxyReqOpts
+  },
+  userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
+    logger.info(`Response Received from identity service: ${proxyReqOpts.statusCode}`)
+    return proxyResData
+  },
+}))
+app.use(errorHandler)
+
 app.listen(PORT, () => {
-  logger.info(`Api gateway is running on port ${PORT}`)
+  logger.info(`Api gateway is running on port ${process.env.API_GATEWAY_DOMAIN}`)
+  logger.info(`Identity service is running on:  ${process.env.IDENTITY_SERVICE_DOMAIN}`)
+  logger.info(`Redis Url: ${process.env.REDIS_URL}`)
 })
 
 process.on("unhandledRejection", (reason, promise) => {

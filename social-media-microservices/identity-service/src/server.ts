@@ -27,7 +27,8 @@ app.use(errorHandler)
 
 
 app.listen(PORT, () => {
-  logger.info(`identity service is running on port ${PORT}`)
+  logger.info(`identity service is running on port ${process.env.IDENTITY_SERVICE_DOMAIN}`)
+  logger.info(`Redis Url: ${process.env.REDIS_URL}`)
   connectToDb()
 })
 
