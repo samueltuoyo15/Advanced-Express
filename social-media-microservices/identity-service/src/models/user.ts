@@ -11,10 +11,8 @@ interface IUser extends Document {
   created_at: Date
   comparePassword(candidatePassword: string): Promise<boolean>
 }
-interface IUserModel extends Model<IUser> {
 
-}
-const userSchema = new mongoose.Schema<IUser, IUserModel>({
+const userSchema = new mongoose.Schema<IUser>({
   username: {
     type: String,
     required: true,
@@ -24,7 +22,6 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>({
   full_name: {
     type: String,
     required: true,
-    trim: true
   },
   email: {
     type: String,
@@ -68,7 +65,7 @@ userSchema.methods.comparePassword = async function(candidatePassword: string): 
 userSchema.index({ username: "text" })
 
 
-const User: IUserModel = mongoose.model<IUser, IUserModel>("User", userSchema)
+const User = mongoose.model<IUser>("User", userSchema)
 export default User
 
 

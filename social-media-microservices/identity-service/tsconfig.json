@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2022",
+    "target": "es2016",
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
