@@ -1,4 +1,4 @@
-import express, { Application, Request, Response, NextFunction} from "express"
+import express, { Application, Request, Response, NextFunction } from "express"
 import helmet from "helmet"
 import cors from "cors"
 import logger from "@/utils/logger"
@@ -23,16 +23,16 @@ const proxyOptions = {
   proxyReqPathResolver: (req: Request) => {
     return req.originalUrl.replace(/^\/v1/, "/api")
   },
-  proxyErrorHandler: (err, res, next) => {
+  proxyErrorHandler: (err: any, res: Response, next: NextFunction) => {
     logger.error(`Proxy Error: ${err.message}`)
     res.status(500).json({ message: "Internal Server Error", error: err.message})
   }
 }
 
-app.use("/v1/auth", proxy(process.env.IDENTITY_SERVICE_DOMAIN, {
+app.use("/v1/auth", proxy(process.env.IDENTITY_SERVICE_DOMAIN!, {
   ...proxyOptions,
   proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-    proxyReqOpts.headers["Content-Type"] === "application/json"
+    proxyReqOpts.headers["Content-Type"] = "application/json"
     return proxyReqOpts
   },
   userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2016",
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
@@ -9,7 +10,11 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
+      "@/routes/*": ["./src/routes/*"],
       "@/middleware/*": ["./src/middleware/*"],
+      "@/config/*": ["./src/config/*"],
+      "@/models/*": ["./src/models/*"],
+      "@/controllers/*": ["./src/controllers/*"],
       "@/utils/*": ["./src/utils/*"]
     },
     "types": ["node"],

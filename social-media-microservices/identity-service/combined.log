@@ -104,3 +104,35 @@
 {"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-06-13T16:57:23.168Z"}
 {"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-06-13T16:57:23.174Z"}
 {"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-06-13T16:57:25.671Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-06-13T17:03:11.852Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-06-13T17:03:11.859Z"}
+{"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-06-13T17:03:14.101Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-06-14T10:06:47.351Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-06-14T10:06:47.360Z"}
+{"code":"ECONNREFUSED","hostname":"_mongodb._tcp.cluster0.pxcx1cg.mongodb.net","level":"error","message":"Failed to connect to mongodb querySrv ECONNREFUSED _mongodb._tcp.cluster0.pxcx1cg.mongodb.net","service":"identity-service","stack":"Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.pxcx1cg.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2025-06-14T10:06:47.420Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-06-14T10:09:04.335Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-06-14T10:09:04.344Z"}
+{"code":"ECONNREFUSED","hostname":"_mongodb._tcp.cluster0.pxcx1cg.mongodb.net","level":"error","message":"Failed to connect to mongodb querySrv ECONNREFUSED _mongodb._tcp.cluster0.pxcx1cg.mongodb.net","service":"identity-service","stack":"Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.pxcx1cg.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2025-06-14T10:09:04.392Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-06-15T14:44:58.164Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-06-15T14:44:58.171Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-06-15T14:44:58.697Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-06-15T14:44:58.698Z"}
+{"level":"info","message":"User Refgistration hit.....","service":"identity-service","timestamp":"2025-06-15T14:44:58.704Z"}
+{"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-06-15T14:45:08.126Z"}
+{"level":"warn","message":"user already registered:","service":"identity-service","timestamp":"2025-06-15T14:45:08.462Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-06-15T14:45:15.478Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-06-15T14:45:15.491Z"}
+{"level":"info","message":"User Refgistration hit.....","service":"identity-service","timestamp":"2025-06-15T14:45:15.494Z"}
+{"level":"warn","message":"user already registered:","service":"identity-service","timestamp":"2025-06-15T14:45:15.689Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-06-15T14:45:23.777Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-06-15T14:45:23.778Z"}
+{"level":"info","message":"User Refgistration hit.....","service":"identity-service","timestamp":"2025-06-15T14:45:23.779Z"}
+{"buffer":{"data":[104,78,220,131,182,128,67,88,126,44,118,200],"type":"Buffer"},"level":"warn","message":"user registration successful:","service":"identity-service","timestamp":"2025-06-15T14:45:23.971Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/login","service":"identity-service","timestamp":"2025-06-15T14:46:01.968Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-06-15T14:46:01.969Z"}
+{"level":"info","message":"User Login endpoint hit....","service":"identity-service","timestamp":"2025-06-15T14:46:01.971Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-08-09T14:53:51.185Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-08-09T14:53:51.206Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-08-09T14:56:28.878Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-08-09T14:56:28.888Z"}
+{"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-08-09T14:56:37.682Z"}
