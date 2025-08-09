@@ -22,8 +22,7 @@ export const registerUser = async (req: Request, res: Response): Promise<any> =>
       return res.status(409).json({ success: false, message: "user already registered" })
       
     }
-    user = new User({ username, full_name, email, password })
-    user.save()
+    user = await User.create({ username, full_name, email, password })
     logger.warn("user registration successful:", user?._id)
   
     const { accessToken, refreshToken } = await generateTokens(user)

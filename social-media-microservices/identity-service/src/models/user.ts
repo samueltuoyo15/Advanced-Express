@@ -1,5 +1,4 @@
-import { NextFunction } from "express"
-import mongoose,  { Document, Model } from "mongoose"
+import mongoose, { Document } from "mongoose"
 import argon2 from "argon2"
 
 interface IUser extends Document {
