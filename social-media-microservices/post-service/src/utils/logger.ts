@@ -10,7 +10,7 @@ const logger = wiston.createLogger({
     wiston.format.splat(),
     wiston.format.json()
     ),
-    defaultMeta: { service: "identity-service" },
+    defaultMeta: { service: "post-service" },
     transports: [
       new wiston.transports.Console({
         format: wiston.format.combine(

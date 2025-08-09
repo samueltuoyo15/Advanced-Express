@@ -136,3 +136,17 @@
 {"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-08-09T14:56:28.878Z"}
 {"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-08-09T14:56:28.888Z"}
 {"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-08-09T14:56:37.682Z"}
+{"level":"info","message":"identity service is running on port http://localhost:3001","service":"identity-service","timestamp":"2025-08-09T15:10:33.807Z"}
+{"level":"info","message":"Redis Url: redis://localhost:6379","service":"identity-service","timestamp":"2025-08-09T15:10:33.822Z"}
+{"level":"info","message":"Connected to MongoDb","service":"identity-service","timestamp":"2025-08-09T15:10:44.738Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-08-09T15:19:15.371Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-08-09T15:19:15.372Z"}
+{"level":"info","message":"User Refgistration hit.....","service":"identity-service","timestamp":"2025-08-09T15:19:15.375Z"}
+{"level":"warn","message":"user already registered:","service":"identity-service","timestamp":"2025-08-09T15:19:20.327Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/register","service":"identity-service","timestamp":"2025-08-09T15:19:30.315Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-08-09T15:19:30.355Z"}
+{"level":"info","message":"User Refgistration hit.....","service":"identity-service","timestamp":"2025-08-09T15:19:30.357Z"}
+{"level":"warn","message":"user already registered:","service":"identity-service","timestamp":"2025-08-09T15:19:30.559Z"}
+{"level":"info","message":"Recieved: POST request to /api/auth/login","service":"identity-service","timestamp":"2025-08-09T15:19:37.530Z"}
+{"level":"info","message":"Request Body: [object Object]","service":"identity-service","timestamp":"2025-08-09T15:19:37.532Z"}
+{"level":"info","message":"User Login endpoint hit....","service":"identity-service","timestamp":"2025-08-09T15:19:37.535Z"}
